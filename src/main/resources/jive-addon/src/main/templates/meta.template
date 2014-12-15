@@ -1,0 +1,35 @@
+{
+    "package_version": "[[jive.addon.package.version]]",
+    "id": "[[UUID1]]",
+    "uuid": "[[UUID1]]",
+    "type": "client-app",
+    "name": "[[jive.addon.name]]",
+    "description": "[[jive.addon.description]]",
+
+    "author" : "[[jive.addon.developer.name]]",
+    "author_affiliation" : "[[jive.addon.developer.company]]",
+    "author_email" : "[[jive.addon.developer.email]]",
+
+    "icon_16": "extension-16.png",
+    "icon_48": "extension-48.png",
+    "icon_128": "extension-128.png",
+
+    "service_url": "[[serviceURL]]",
+
+    "config_url" : "%serviceURL%/addon/[[serviceContext]]/configure.jsp",
+    "preinstall" : "%serviceURL%/addon/[[serviceContext]]/preinstall.jsp",
+
+    "register_url": "%serviceURL%/[[serviceContext]]/instance/register",
+    "unregister_url": "%serviceURL%/[[serviceContext]]/instance/unregister",
+
+    "redirect_url": "%serviceURL%/[[serviceContext]]/oauth2/callback",
+    "health_url" : "[[serviceURL]]/[[serviceContext]]/health/ping",
+
+    "website_url" : "[[jive.addon.company.website.url]]",
+    "community_url" : "[[jive.addon.company.community.url]]",
+    "info_email" : "[[jive.addon.company.email]]",
+
+    "minimum_version": "0000",
+    "status": "available",
+    "released_on": "[[jive.addon.build.timestamp]]"
+}

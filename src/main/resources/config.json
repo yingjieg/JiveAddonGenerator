@@ -1,0 +1,14 @@
+{  
+    "group":"com.gogo.test",
+    "artifactId":"gogotest",
+    "addonName":"GoGoTest",
+    "tiles":{  
+        "tile-list":"gogo-list-tile",
+        "tile-table":"gogo-list-table"
+    },
+    "apps":[  
+        "github4jive",
+        "jira4jive"
+    ],
+    "storage":"xxx"
+}
