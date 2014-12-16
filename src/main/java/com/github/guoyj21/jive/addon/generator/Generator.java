@@ -2,17 +2,15 @@ package com.github.guoyj21.jive.addon.generator;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 import org.apache.commons.io.FileUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.guoyj21.jive.addon.generator.configuration.Config;
 import com.github.guoyj21.jive.addon.generator.configuration.annotations.AddonProcess;
 import com.github.guoyj21.jive.addon.generator.process.Processor;
@@ -41,33 +39,51 @@ public class Generator {
 			this.usage();
 		}
 
+		createTempDir();
+
+		System.setProperty("jive.sdk.path", this.sdkPath);
+
+		doProcess();
 		String currentPath = this.getCurrentPath();
 
-		// System.out.println("+++++ " + new File(currentPath +
-		// "/jive-sdk-java-jersey/jive-addon/src/main/java/com/jivesoftware/addon/example/tile/").mkdirs());
-
 		createBaseProjectStructure();
-		doProcess();
+	}
+
+	private void createTempDir() {
+		try {
+			File tempDir = File.createTempFile("generator", "temp");
+			if(tempDir.mkdir()) {
+				System.out.println("++++++++++++++++++++");
+			}
+			System.out.println(tempDir.getPath());
+			FileUtils.copyInputStreamToFile(Thread.currentThread().getContextClassLoader().getResourceAsStream("jive-addon"),
+					tempDir);
+
+			for (String f : tempDir.list()) {
+				System.out.println(f + "---");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void createBaseProjectStructure() {
 		File sdkFolder = new File(sdkPath);
 		System.out.println(sdkPath);
 
-		if (sdkFolder.exists()) {
-			copySourceSdk();
-		} else {
-			System.out.println("Error, stop");
-		}
+		// if (sdkFolder.exists()) {
+		// copySourceSdk();
+		// } else {
+		// System.out.println("Error, stop");
+		// }
 	}
 
 	private void doProcess() {
 		ObjectMapper mapper = new ObjectMapper();
-		String path = Thread.currentThread().getContextClassLoader().getResource("config.json").getPath();
-		System.out.println(path);
+		InputStream configStream = ProgramPathUtil.getCurrentPath("config.json");
 		Config config = null;
 		try {
-			config = mapper.readValue(new File(path), Config.class);
+			config = mapper.readValue(configStream, Config.class);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -86,15 +102,17 @@ public class Generator {
 
 	private void copySourceSdk() {
 		try {
-			Files.copy(Paths.get(getCurrentPath() + "jive-addon"),
-					Paths.get(getCurrentPath() + "jive-sdk-java-jersey" + SEPERATOR + "jive-addon"),
-					StandardCopyOption.REPLACE_EXISTING);
+			File addon = new File(getCurrentPath() + "jive-addon");
+			System.out.println(addon.setWritable(true) + "------------");
+			FileUtils.copyDirectory(addon, new File(getCurrentPath() + "jive-sdk-java-jersey" + SEPERATOR
+					+ "jive-addon"));
 
 			FileUtils.copyDirectory(new File(this.sdkPath + SEPERATOR + "jive-sdk"), new File(getCurrentPath()
 					+ "jive-sdk-java-jersey" + SEPERATOR + "jive-sdk"));
 
 			FileUtils.copyFile(new File(this.sdkPath + SEPERATOR + "pom.xml"), new File(getCurrentPath()
 					+ "jive-sdk-java-jersey" + SEPERATOR + "pom.xml"));
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

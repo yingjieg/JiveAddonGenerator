@@ -3,9 +3,9 @@ package com.github.guoyj21.ut.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.guoyj21.jive.addon.generator.configuration.Config;
 
 public class ConfigTest {

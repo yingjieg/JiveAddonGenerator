@@ -16,10 +16,10 @@ public class Config {
 	private String addonName;
 
 	@AddonProcess(name = "TilesProcess", description = "xxxx")
-	private Map<String, String> tiles;
+	private List<Tiles> tiles;
 
-	@AddonProcess(name = "AppsProcess", description = "xxxxx") 
-	private List<String> apps;
+	@AddonProcess(name = "AppsProcess", description = "xxxxx")
+	private List<Apps> apps;
 
 	@AddonProcess(name = "StorageProcess", description = "xxxxxxx")
 	private String storage;
@@ -48,19 +48,19 @@ public class Config {
 		this.addonName = addonName;
 	}
 
-	public Map<String, String> getTiles() {
+	public List<Tiles> getTiles() {
 		return tiles;
 	}
 
-	public void setTiles(Map<String, String> tiles) {
+	public void setTiles(List<Tiles> tiles) {
 		this.tiles = tiles;
 	}
 
-	public List<String> getApps() {
+	public List<Apps> getApps() {
 		return apps;
 	}
 
-	public void setApps(List<String> apps) {
+	public void setApps(List<Apps> apps) {
 		this.apps = apps;
 	}
 

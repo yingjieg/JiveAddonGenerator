@@ -1,0 +1,6 @@
+{
+	"name" : "[appName]",
+	"id": "[[UUID[appName]]]",
+	"appPath": "[appName]-[[jive.random.seed]]",
+	"url": "[[serviceURL]]/apps/[appName]/app.xml"
+}

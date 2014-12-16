@@ -23,7 +23,7 @@
     <!-- 
     <name>Jive SDK - Java - Jersey - Jive Add-On</name>
     -->
-    <name>[addonNameHandler]</name>
+    <name>[addonName]</name>
     <packaging>war</packaging>
 
     <properties>
@@ -47,13 +47,13 @@
         -->
         <clientUrl>http://localhost</clientUrl>
         <port>8090</port>
-        <appContext>[appContextHandler]</appContext>
+        <appContext>[addonName]</appContext>
 
         <!--
         ############## ADD-ON CONFIGURATION ###########################################################################
         -->
         <jive.addon.package.version>1.0</jive.addon.package.version>
-        <jive.addon.build.name>[addonBuildNameHandler]</jive.addon.build.name>
+        <jive.addon.build.name>jive-sdk-jersey-example</jive.addon.build.name>
         <jive.addon.name>[addonNameHandler]</jive.addon.name>
         <jive.addon.description>[addonDescriptionHandler]</jive.addon.description>
 
@@ -92,15 +92,17 @@
         <!--
         ############## ADD-ON TILE CONFIGURATION ######################################################################
         -->
-        [addonTileConfigurationHandler]
+        [addonTileConfiguration]
 
         <!--
         ############## ADD-ON STORAGE / CARTRIDGE CONFIGURATION ########################################################
         -->
-        [addonStorageConfigurationHandler]
+        [addonStorageConfiguration]
 
+		<!--
 		############## ADD-ON CARTRIDGE CONFIGURATION ########################################################
-		[addonCartridgeConfigruationHandler]
+		-->
+		[addonCartridgeConfigruation]
 
     </properties>
 
@@ -192,7 +194,7 @@
 
                                         project.setProperty( "jive.random.seed" , System.currentTimeMillis() );
                                         project.setProperty( "jive.random.UUID1" , UUID.randomUUID().toString() );
-                                        [uuidHandler]
+                                        [uuid]
 
                                         // ADD MORE CUSTOM PROPS / LOGIC IF NECESSARY
                                     ]]>
@@ -218,7 +220,7 @@
                                 <replace file="src/main/extension/definition.json" token="[[serviceURL]]" value="${clientUrl}:${port}"/>
                                 <replace file="src/main/extension/definition.json" token="[[serviceContext]]" value="${appContext}"/>
                                
-                                [definitionConfigurationHandler] 
+                                [definitionConfiguration] 
                                 
                                 <replace file="src/main/extension/definition.json" token="[[jive.addon.build.timestamp]]" value="${jive.addon.build.timestamp}"/>
                                 <replace file="src/main/extension/definition.json" token="[[jive.addon.name]]" value="${jive.addon.name}"/>

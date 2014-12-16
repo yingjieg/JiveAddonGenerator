@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.guoyj21.jive.addon.generator.configuration.Config;
 import com.github.guoyj21.jive.addon.generator.configuration.annotations.AddonProcess;
 

@@ -2,13 +2,25 @@
     "group":"com.gogo.test",
     "artifactId":"gogotest",
     "addonName":"GoGoTest",
-    "tiles":{  
-        "tile-list":"gogo-list-tile",
-        "tile-table":"gogo-list-table"
-    },
+    "tiles":[
+    	{
+    		"name": "gogo-list-tile",
+    		"style": "tile-list"
+    	},
+    	{
+    		"name": "gogo-list-table",
+    		"style": "tile-table"
+    	}
+    ],
     "apps":[  
-        "github4jive",
-        "jira4jive"
+    	{
+    		"name": "Github4Jive",
+    		"description": "Github for Jive"
+    	},
+    	{
+    		"name": "Jira4Jive",
+    		"description": "JIRA for Jive"
+    	}
     ],
     "storage":"xxx"
 }

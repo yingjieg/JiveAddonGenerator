@@ -1,21 +1,30 @@
-{
-    "sampleData" : {
-        "title" : "{{{TILE_NAME}}} {{{TILE_STYLE}}}",
-        "contents" : [ {
-            "text" : "Initial text to be replaced"
-        } ],
-        "config" : {
-               "listStyle" : "contentList"
+{  
+    "sampleData":{  
+        "title":"[[jive.addon.tile.list.displayName]]",
+        "contents":[  
+            {  
+                "text":"Default Text"
+            }
+        ],
+        "config":{  
+            "listStyle":"contentList"
         }
     },
-    "displayName" : "{{{TILE_NAME}}}",
-    "name" : "{{{TILE_NAME}}}",
-    "description" : "{{{TILE_NAME}}}",
-    "style" : "LIST",
-    "icons" : {
-        "16" : "https://community.jivesoftware.com/servlet/JiveServlet/showImage/102-99994-1-1023036/j.png",
-        "48" : "https://community.jivesoftware.com/servlet/JiveServlet/showImage/102-99994-1-1023036/j.png",
-        "128" : "https://community.jivesoftware.com/servlet/JiveServlet/showImage/102-99994-1-1023036/j.png"
+    "displayName":"[[jive.addon.tile.list.displayName]]",
+    "name":"[tileName]",
+    "description":"[[jive.addon.tile.list.description]]",
+    "style":"LIST",
+    "icons":{  
+        "16":"[[serviceURL]]/images/extension-16.png",
+        "48":"[[serviceURL]]/images/extension-48.png",
+        "128":"[[serviceURL]]/images/extension-128.png"
     },
-    "action": "/{{{TILE_NAME}}}/action"
+    "action":"[[serviceURL]]/tiles/[tileName]/action.jsp",
+    "id":"[[UUID3]]",
+    "definitionDirName":"[tileName]",
+    "published":"[[jive.addon.build.timestamp]]",
+    "updated":"[[jive.addon.build.timestamp]]",
+    "config":"[[serviceURL]]/tiles/[tileName]/configure.jsp",
+    "unregister":"[[serviceURL]]/[[serviceContext]]/tile/unregister",
+    "register":"[[serviceURL]]/[[serviceContext]]/tile/register"
 }
